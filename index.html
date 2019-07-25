@@ -1,0 +1,41 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Flip animation</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <div id="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img id="content-front" src="start.png">
+        </div>
+        <div class="back">
+          <img id="content-back" src="middle.png">
+        </div>
+        <div class="frame"></div>
+      </div>
+    </div>
+    <script>
+      function flipToMiddle() {
+        document.getElementById('content-front').src = "base.png";
+        document.getElementById('content-back').src = "base.png";
+        const elements = document.querySelectorAll('#flip-container .flipper');
+        elements.forEach(element => element.style.transform = "rotateY(-180deg)");
+        document.getElementById('content-back').src = "middle.png";
+      }
+
+      function flipToEnd() {
+        document.getElementById('content-front').src = "base.png";
+        document.getElementById('content-back').src = "base.png";
+        const elements = document.querySelectorAll('#flip-container .flipper');
+        elements.forEach(element => element.style.transform = "rotateY(-360deg)");
+        document.getElementById('content-front').src = "end.png";
+      }
+
+      window.setTimeout(flipToMiddle, 2000);
+      window.setTimeout(flipToEnd, 5000);
+    </script>
+  </body>
+</html>
